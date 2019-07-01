@@ -97,3 +97,25 @@ Content-Type: application/json
   "message": "SUCCESS"
 }
 ```
+
+## 사용자 삭제 (Delete)
+
+### Request Body
+```
+POST http://localhost:8080/plugin/oamapi/user/delete
+Content-Type: application/json
+
+{
+  "eACommHeaderVO": [],
+  "id": "tester"
+}
+```
+
+### Response Body
+```
+{
+  "eACommHeaderVO": [],
+  "message": "SUCCESS"
+}
+```
+
