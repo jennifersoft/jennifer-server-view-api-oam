@@ -41,3 +41,34 @@ Content-Type: application/json
   "message": "SUCCESS"
 }
 ```
+
+## 사용자 조회 (read)
+
+### Request Body
+```
+GET http://localhost:8080/plugin/oamapi/user/read
+Content-Type: application/json
+
+{
+  "eACommHeaderVO": [],
+  "id": "guest"
+}
+```
+
+### Response Body
+```
+{
+  "eACommHeaderVO": [],
+  "message": "SUCCESS",
+  "users": [
+    {
+      "id": "tester",
+      "password": "",
+      "name": "Tester",
+      "group": "guest",
+      "department": "R&D"
+    }
+  ]
+}
+```
+
