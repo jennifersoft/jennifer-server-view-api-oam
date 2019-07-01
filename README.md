@@ -45,6 +45,7 @@ Content-Type: application/json
 ## 사용자 조회 (read)
 
 ### Request Body
+id 값이 공백이면 전체 사용자를 조회한다.
 ```
 GET http://localhost:8080/plugin/oamapi/user/read
 Content-Type: application/json
