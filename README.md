@@ -120,3 +120,11 @@ Content-Type: application/json
 }
 ```
 
+## 응답 메시지 정리
+모든 요청에 대한 응답에는 message가 포함되는데, 종류는 다음과 같다.
+ - SUCCESS : 요청 성공
+ - USER_EXIST : 사용자가 존재함
+ - USER_NOT_EXIST : 사용자가 존재하지 않음
+ - GROUP_NOT_EXIST : 그룹이 존재하지 않음
+ - REQUIRED_PARAMETERS : 필수 요청 값이 누락됨
+
