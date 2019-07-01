@@ -12,7 +12,13 @@ import java.lang.Exception
 
 @RestController
 class OamApiController @Autowired constructor(private var userService: UserService, private var groupService: GroupService) : PluginController() {
-    private val RESPONSE_HEADER_KEYS = arrayOf("END_USER", "MD_CD", "UUID", "SRVC_ID")
+    companion object {
+        private val RESPONSE_HEADER_KEYS = arrayOf("END_USER", "MD_CD", "UUID", "SRVC_ID")
+
+        fun filteringHeaderVO(headers: List<Map<String, String>>): List<Map<String, String>> {
+            return headers.filter { RESPONSE_HEADER_KEYS.contains(it["ZA_COMM_BUSN_HEDR_KEY"]) }
+        }
+    }
 
     @GetMapping(value = [ "/oamapi"])
     fun getMainPage(): ResponseEntity<ResponseGetPO> =
@@ -107,9 +113,5 @@ class OamApiController @Autowired constructor(private var userService: UserServi
     @ExceptionHandler
     fun handleError(e: Exception): ResponseEntity<ResponseErrorPO> {
         return ResponseEntity(ResponseErrorPO(e.toString()), HttpStatus.OK)
-    }
-
-    private fun filteringHeaderVO(headers: List<Map<String, String>>): List<Map<String, String>> {
-        return headers.filter { RESPONSE_HEADER_KEYS.contains(it["ZA_COMM_BUSN_HEDR_KEY"]) }
     }
 }

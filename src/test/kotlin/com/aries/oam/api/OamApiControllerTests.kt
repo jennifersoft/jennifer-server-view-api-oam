@@ -1,11 +1,13 @@
 package com.aries.oam.api
 
+import com.aries.oam.api.OamApiController.Companion.filteringHeaderVO
 import com.aries.oam.api.data.*
 import com.aries.view.service.GroupService
 import com.aries.view.service.GroupServiceImpl
 import com.aries.view.service.UserService
 import com.aries.view.service.UserServiceImpl
 import com.fasterxml.jackson.databind.ObjectMapper
+import org.junit.Assert
 import org.junit.Before
 import org.junit.FixMethodOrder
 import org.junit.Test
@@ -229,5 +231,21 @@ class OamApiControllerTests {
 
         val r = mockMvc!!.perform(req)
         r.andExpect(jsonPath("\$.message").value(OamApiStatus.GROUP_NOT_EXIST.name))
+    }
+
+    @Test
+    fun `eACommHeaderVO Filtering`() {
+        val keyStr = "ZA_COMM_BUSN_HEDR_KEY"
+        var valStr = "ZA_COMM_BUSN_HEDR_VAL"
+        val headers = arrayListOf<Map<String, String>>()
+
+        headers.add(mapOf(Pair(keyStr, "END_USER"), Pair(valStr, "12345")))
+        headers.add(mapOf(Pair(keyStr, "MD_CD"), Pair(valStr, "F1042")))
+        headers.add(mapOf(Pair(keyStr, "UUID"), Pair(valStr, "T-CC11-101_txCCOC03SE_T0056_1440399484835")))
+        headers.add(mapOf(Pair(keyStr, "SRVC_ID"), Pair(valStr, "F10420001")))
+        headers.add(mapOf(Pair(keyStr, "version"), Pair(valStr, "CS2.0")))
+
+        val filteredHeaders = filteringHeaderVO(headers)
+        assert(filteredHeaders.size == 4)
     }
 }
