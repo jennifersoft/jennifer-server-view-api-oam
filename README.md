@@ -20,7 +20,6 @@
 ## 사용자 생성 (create)
 
 ### Request Body
-
 ```
 POST http://localhost:8080/plugin/oamapi/user/create
 Content-Type: application/json
@@ -32,5 +31,13 @@ Content-Type: application/json
   "name": "Tester",
   "department": "R&D",
   "group": "guest"
+}
+```
+
+### Response Body
+```
+{
+  "eACommHeaderVO": [],
+  "message": "SUCCESS"
 }
 ```
