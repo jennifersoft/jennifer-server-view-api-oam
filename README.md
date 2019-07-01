@@ -17,7 +17,7 @@
 
 # API 타입별 스펙
 
-## 사용자 생성 (create)
+## 사용자 생성 (Create)
 
 ### Request Body
 ```
@@ -42,7 +42,7 @@ Content-Type: application/json
 }
 ```
 
-## 사용자 조회 (read)
+## 사용자 조회 (Read)
 
 ### Request Body
 id 값이 공백이면 전체 사용자를 조회한다.
@@ -73,3 +73,27 @@ Content-Type: application/json
 }
 ```
 
+## 사용자 수정 (Update)
+
+### Request Body
+```
+POST http://localhost:8080/plugin/oamapi/user/update
+Content-Type: application/json
+
+{
+  "eACommHeaderVO": [],
+  "id": "tester",
+  "password": "1234",
+  "name": "Tester2",
+  "department": "R&D",
+  "group": "guest"
+}
+```
+
+### Response Body
+```
+{
+  "eACommHeaderVO": [],
+  "message": "SUCCESS"
+}
+```
