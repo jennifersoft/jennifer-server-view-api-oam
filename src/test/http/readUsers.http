@@ -1,0 +1,22 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+GET http://localhost:8080/plugin/oamapi/user/read
+Content-Type: application/json
+
+{
+  "eACommHeaderVO": [
+    { "ZA_COMM_BUSN_HEDR_KEY": "END_USER", "ZA_COMM_BUSN_HEDR_VAL": "12345" },
+    { "ZA_COMM_BUSN_HEDR_KEY": "MD_CD", "ZA_COMM_BUSN_HEDR_VAL": "F1042" },
+    { "ZA_COMM_BUSN_HEDR_KEY": "UUID", "ZA_COMM_BUSN_HEDR_VAL": "T-CC11-101_txCCOCO03SE_1440399485835" },
+    { "ZA_COMM_BUSN_HEDR_KEY": "SRVC_ID", "ZA_COMM_BUSN_HEDR_VAL": "F10420001" },
+    { "ZA_COMM_BUSN_HEDR_KEY": "version", "ZA_COMM_BUSN_HEDR_VAL": "CS2.0" }
+  ],
+  "id": ""
+}
+
+###
