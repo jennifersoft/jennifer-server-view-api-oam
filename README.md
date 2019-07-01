@@ -18,6 +18,7 @@
 # API 타입별 스펙
 
 ## 사용자 생성 (Create)
+Request Method는 POST와 GET 방식만 지원한다.
 
 ### Request Body
 ```
