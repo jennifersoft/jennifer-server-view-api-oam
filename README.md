@@ -16,3 +16,21 @@
 2. http://localhost:8080/plugin/oamapi/user/타입 경로로 API를 호출한다.
 
 # API 타입별 스펙
+
+## 사용자 생성 (create)
+
+### Request Body
+
+```
+POST http://localhost:8080/plugin/oamapi/user/create
+Content-Type: application/json
+
+{
+  "eACommHeaderVO": [],
+  "id": "tester",
+  "password": "1234",
+  "name": "Tester",
+  "department": "R&D",
+  "group": "guest"
+}
+```
