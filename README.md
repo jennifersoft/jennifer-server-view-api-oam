@@ -19,6 +19,7 @@
 curl -X GET \
 -H "Content-Type: application/json" \
 -d '{ "eACommHeaderVO": [], "id": "" }' \
+http://localhost:8080/plugin/oamapi/user/read
 ```
 
 # API 타입별 스펙
