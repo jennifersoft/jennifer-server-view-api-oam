@@ -34,7 +34,7 @@ class OamApiController @Autowired constructor(private var userService: UserServi
 
         var status = OamApiStatus.SUCCESS
         if (po.id == "" || po.password == "" || po.name == "")
-            status = OamApiStatus.REQUIRED_PARAMETERS
+            status = OamApiStatus.PARAMETER_REQUIRED
         else if (userService.exist(po.id))
             status = OamApiStatus.USER_EXIST
         else if (groupService.find(po.group) == null)

@@ -7,7 +7,6 @@ import com.aries.view.service.GroupServiceImpl
 import com.aries.view.service.UserService
 import com.aries.view.service.UserServiceImpl
 import com.fasterxml.jackson.databind.ObjectMapper
-import org.junit.Assert
 import org.junit.Before
 import org.junit.FixMethodOrder
 import org.junit.Test
@@ -83,7 +82,7 @@ class OamApiControllerTests {
                 ))
 
         val r = mockMvc!!.perform(req)
-        r.andExpect(jsonPath("\$.message").value(OamApiStatus.REQUIRED_PARAMETERS.name))
+        r.andExpect(jsonPath("\$.message").value(OamApiStatus.PARAMETER_REQUIRED.name))
         r.andDo(print())
     }
 
@@ -96,7 +95,7 @@ class OamApiControllerTests {
                 ))
 
         val r = mockMvc!!.perform(req)
-        r.andExpect(jsonPath("\$.message").value(OamApiStatus.REQUIRED_PARAMETERS.name))
+        r.andExpect(jsonPath("\$.message").value(OamApiStatus.PARAMETER_REQUIRED.name))
         r.andDo(print())
     }
 
@@ -109,7 +108,7 @@ class OamApiControllerTests {
                 ))
 
         val r = mockMvc!!.perform(req)
-        r.andExpect(jsonPath("\$.message").value(OamApiStatus.REQUIRED_PARAMETERS.name))
+        r.andExpect(jsonPath("\$.message").value(OamApiStatus.PARAMETER_REQUIRED.name))
         r.andDo(print())
     }
 
