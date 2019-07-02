@@ -14,6 +14,15 @@
 
 1. java -jar dist/oam-api_local-1.0.0.jar 명령어를 입력한다.
 2. http://localhost:8080/plugin/oamapi/user/타입 경로로 API를 호출한다.
+3. Request Body를 설정하지 않으면 서버 에러가 발생한다.
+```
+curl -X GET \
+-H "Content-Type: application/json" \
+-d '{ "eACommHeaderVO": [], "id": "" }' \
+http://localhost:8080/plugin/oamapi/user/read
+```
+참고로 eACommHeaderVO가 빈 배열이여도 커맨드는 동작한다.
+다만 설정 값이 다수가 존재할 경우에는 가이드 문서에 명시된 기본 헤더 4개만 Response Body에 추가된다.
 
 # API 타입별 스펙
 
@@ -46,7 +55,7 @@ Content-Type: application/json
 ## 사용자 조회 (Read)
 
 ### Request Body
-id 값이 공백이면 전체 사용자를 조회한다.
+id 값이 공백이면 전체 사용자를 조회하며, 사용자 비밀번호는 보안상의 이유로 공백으로 표시된다.
 ```
 GET http://localhost:8080/plugin/oamapi/user/read
 Content-Type: application/json
@@ -127,4 +136,5 @@ Content-Type: application/json
  - USER_NOT_EXIST : 사용자가 존재하지 않음
  - GROUP_NOT_EXIST : 그룹이 존재하지 않음
  - REQUIRED_PARAMETERS : 필수 요청 값이 누락됨
+ - Exception toString : 서버에서 예외 발생시 표시됨 (Response Body에서 eACommHeaderVO는 표시되지 않음)
 
