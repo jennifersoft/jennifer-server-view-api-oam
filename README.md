@@ -21,6 +21,8 @@ curl -X GET \
 -d '{ "eACommHeaderVO": [], "id": "" }' \
 http://localhost:8080/plugin/oamapi/user/read
 ```
+참고로 eACommHeaderVO가 빈 배열이여도 커맨드는 동작한다.
+다만 설정 값들이 다수가 존재할 경우에는 기본 헤더 4개만 Response Body에 추가된다.
 
 # API 타입별 스펙
 
