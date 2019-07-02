@@ -136,5 +136,5 @@ Content-Type: application/json
  - USER_NOT_EXIST : 사용자가 존재하지 않음
  - GROUP_NOT_EXIST : 그룹이 존재하지 않음
  - REQUIRED_PARAMETERS : 필수 요청 값이 누락됨
- - 서버 에러 발생시 에러 문자열 그대로 보여짐
+ - 서버 에러 메시지
 
