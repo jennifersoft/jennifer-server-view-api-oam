@@ -136,5 +136,5 @@ Content-Type: application/json
  - USER_NOT_EXIST : 사용자가 존재하지 않음
  - GROUP_NOT_EXIST : 그룹이 존재하지 않음
  - REQUIRED_PARAMETERS : 필수 요청 값이 누락됨
- - Exception toString : 서버 예외 발생시 표시됨
+ - Exception toString : 서버에서 예외 발생시 표시됨
 
