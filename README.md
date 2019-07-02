@@ -46,7 +46,7 @@ Content-Type: application/json
 ## 사용자 조회 (Read)
 
 ### Request Body
-id 값이 공백이면 전체 사용자를 조회한다.
+id 값이 공백이면 전체 사용자를 조회하며, 사용자 비밀번호는 보안상의 이유로 공백으로 표시된다.
 ```
 GET http://localhost:8080/plugin/oamapi/user/read
 Content-Type: application/json
