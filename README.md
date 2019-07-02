@@ -14,6 +14,12 @@
 
 1. java -jar dist/oam-api_local-1.0.0.jar 명령어를 입력한다.
 2. http://localhost:8080/plugin/oamapi/user/타입 경로로 API를 호출한다.
+3. Request Body를 사용하지 않으면 서버 에러가 발생하므로 다음 명령어로 테스트할 수 있다.
+```
+curl -X GET \
+-H "Content-Type: application/json" \
+-d '{ "eACommHeaderVO": [], "id": "" }' \
+```
 
 # API 타입별 스펙
 
