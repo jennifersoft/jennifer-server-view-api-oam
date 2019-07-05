@@ -27,13 +27,10 @@ class OamApiController @Autowired constructor(private var userService: UserServi
             return headers
         }
 
-        private fun errorResponseEntity(headers: List<Map<String, String>>, message: String): ResponseEntity<AbstractPO> =
-            ResponseEntity(ResponseErrorPO(filteringHeaderVO(headers), message), HTTP_COMMON_HEADERS, HttpStatus.OK)
-
-        private fun postResponseEntity(headers: List<Map<String, String>>, message: String): ResponseEntity<AbstractPO> =
+        private fun responseEntity(headers: List<Map<String, String>>, message: String): ResponseEntity<AbstractPO> =
             ResponseEntity(ResponsePostPO(filteringHeaderVO(headers), message), HTTP_COMMON_HEADERS, HttpStatus.OK)
 
-        private fun getResponseEntity(headers: List<Map<String, String>>, message: String, users: List<UserVO>): ResponseEntity<AbstractPO> =
+        private fun responseEntityIncludingUsers(headers: List<Map<String, String>>, message: String, users: List<UserVO>): ResponseEntity<AbstractPO> =
             ResponseEntity(ResponseGetPO(filteringHeaderVO(headers), message, users), HTTP_COMMON_HEADERS, HttpStatus.OK)
     }
 
@@ -68,10 +65,10 @@ class OamApiController @Autowired constructor(private var userService: UserServi
                 userService.save(dbUser)
             }
         } catch (e: Exception) {
-            return errorResponseEntity(po.eACommHeaderVO, e.toString())
+            return responseEntity(po.eACommHeaderVO, e.toString())
         }
 
-        return postResponseEntity(po.eACommHeaderVO, status.name)
+        return responseEntity(po.eACommHeaderVO, status.name)
     }
 
     @PostMapping(value = [ "/oamapi/user/read" ])
@@ -93,10 +90,10 @@ class OamApiController @Autowired constructor(private var userService: UserServi
                     users.add(UserVO(dbUser.id, "", dbUser.name, dbUser.groupId, dbUser.dept))
             }
         } catch (e: Exception) {
-            return errorResponseEntity(po.eACommHeaderVO, e.toString())
+            return responseEntity(po.eACommHeaderVO, e.toString())
         }
 
-        return getResponseEntity(po.eACommHeaderVO, status.name, users)
+        return responseEntityIncludingUsers(po.eACommHeaderVO, status.name, users)
     }
 
     @PostMapping(value = [ "/oamapi/user/update" ])
@@ -123,10 +120,10 @@ class OamApiController @Autowired constructor(private var userService: UserServi
             if (status == OamApiStatus.SUCCESS)
                 userService.modify(dbUser)
         } catch (e: Exception) {
-            return errorResponseEntity(po.eACommHeaderVO, e.toString())
+            return responseEntity(po.eACommHeaderVO, e.toString())
         }
 
-        return postResponseEntity(po.eACommHeaderVO, status.name)
+        return responseEntity(po.eACommHeaderVO, status.name)
     }
 
     @PostMapping(value = [ "/oamapi/user/delete" ])
@@ -140,9 +137,9 @@ class OamApiController @Autowired constructor(private var userService: UserServi
             if (status == OamApiStatus.SUCCESS)
                 userService.remove(po.id)
         } catch (e: Exception) {
-            return errorResponseEntity(po.eACommHeaderVO, e.toString())
+            return responseEntity(po.eACommHeaderVO, e.toString())
         }
 
-        return postResponseEntity(po.eACommHeaderVO, status.name)
+        return responseEntity(po.eACommHeaderVO, status.name)
     }
 }
