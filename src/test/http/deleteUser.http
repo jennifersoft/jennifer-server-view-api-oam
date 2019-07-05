@@ -6,10 +6,10 @@
 # * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
 
 POST http://localhost:8080/plugin/oamapi/user/delete
-Content-Type: application/json
+Content-Type: application/json;charset=UTF-8
 
 {
-  "eACommHeaderVO": [],
+  "ZA_COMM_HEADER": [],
   "id": "tester"
 }
 

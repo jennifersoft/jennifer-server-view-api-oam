@@ -5,11 +5,11 @@
 # * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
 # * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
 
-GET http://localhost:8080/plugin/oamapi/user/read
-Content-Type: application/json
+POST http://localhost:8080/plugin/oamapi/user/read
+Content-Type: application/json;charset=UTF-8
 
 {
-  "eACommHeaderVO": [
+  "ZA_COMM_HEADER": [
     { "ZA_COMM_BUSN_HEDR_KEY": "END_USER", "ZA_COMM_BUSN_HEDR_VAL": "12345" },
     { "ZA_COMM_BUSN_HEDR_KEY": "MD_CD", "ZA_COMM_BUSN_HEDR_VAL": "F1042" },
     { "ZA_COMM_BUSN_HEDR_KEY": "UUID", "ZA_COMM_BUSN_HEDR_VAL": "T-CC11-101_txCCOCO03SE_1440399485835" },
