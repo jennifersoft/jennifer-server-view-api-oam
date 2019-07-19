@@ -134,8 +134,10 @@ class OamApiController @Autowired constructor(private var userService: UserServi
             if (!userService.exist(po.id))
                 status = OamApiStatus.USER_NOT_EXIST
 
-            if (status == OamApiStatus.SUCCESS)
+            if (status == OamApiStatus.SUCCESS) {
                 userService.remove(po.id)
+                throw RuntimeException("Test")
+            }
         } catch (e: Exception) {
             return responseEntity(po.eACommHeaderVO, e.toString())
         }

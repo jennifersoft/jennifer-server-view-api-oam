@@ -70,7 +70,6 @@ public class UserServiceImpl implements UserService
     @Override
     public void remove(String id) {
         users.remove(find(id));
-        throw new RuntimeException("Test");
     }
 
     @Override
