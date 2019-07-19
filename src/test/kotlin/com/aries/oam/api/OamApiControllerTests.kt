@@ -2,7 +2,6 @@ package com.aries.oam.api
 
 import com.aries.oam.api.OamApiController.Companion.filteringHeaderVO
 import com.aries.oam.api.data.*
-import com.aries.view.domain.User
 import com.aries.view.service.GroupService
 import com.aries.view.service.GroupServiceImpl
 import com.aries.view.service.UserService
@@ -12,14 +11,12 @@ import org.junit.Before
 import org.junit.FixMethodOrder
 import org.junit.Test
 import org.junit.runners.MethodSorters
-import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers.header
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers.print
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -195,7 +192,8 @@ class OamApiControllerTests {
                 ))
 
         val r = mockMvc!!.perform(req)
-        r.andExpect(jsonPath("\$.message").value(OamApiStatus.SUCCESS.name))
+        r.andDo(print())
+        r.andExpect(content().string("{\"message\":\"java.lang.RuntimeException: Test\",\"ZA_COMM_HEADER\":[]}"))
         r.andExpect(header().string("Content-Type", DEFAULT_CONTENT_TYPE))
     }
 

@@ -9,7 +9,13 @@ POST http://localhost:8080/plugin/oamapi/user/delete
 Content-Type: application/json;charset=UTF-8
 
 {
-  "ZA_COMM_HEADER": [],
+  "ZA_COMM_HEADER": [
+    { "ZA_COMM_BUSN_HEDR_KEY": "END_USER", "ZA_COMM_BUSN_HEDR_VAL": "12345" },
+    { "ZA_COMM_BUSN_HEDR_KEY": "MD_CD", "ZA_COMM_BUSN_HEDR_VAL": "F1042" },
+    { "ZA_COMM_BUSN_HEDR_KEY": "UUID", "ZA_COMM_BUSN_HEDR_VAL": "T-CC11-101_txCCOCO03SE_1440399485835" },
+    { "ZA_COMM_BUSN_HEDR_KEY": "SRVC_ID", "ZA_COMM_BUSN_HEDR_VAL": "F10420001" },
+    { "ZA_COMM_BUSN_HEDR_KEY": "version", "ZA_COMM_BUSN_HEDR_VAL": "CS2.0" }
+  ],
   "id": "tester"
 }
 
