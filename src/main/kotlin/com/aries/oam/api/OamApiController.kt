@@ -29,12 +29,12 @@ class OamApiController @Autowired constructor(private var userService: UserServi
         val dbUser = com.aries.view.domain.User()
 
         // 그룹 아이디는 공백일 때, guest로 설정해준다.
-        if (po.group.equals(""))
+        if (po.group == "")
             po.group = "guest"
 
         var status = OamApiStatus.SUCCESS
         if (po.id == "" || po.password == "" || po.name == "")
-            status = OamApiStatus.PARAMETER_REQUIRED
+            status = OamApiStatus.REQUIRED_PARAMETERS
         else if (userService.exist(po.id))
             status = OamApiStatus.USER_EXIST
         else if (groupService.find(po.group) == null)
@@ -57,8 +57,8 @@ class OamApiController @Autowired constructor(private var userService: UserServi
         val users = arrayListOf<UserVO>()
         var status = OamApiStatus.SUCCESS
 
-        if (po.id.equals("")) {
-            var dbUsers = userService.list()
+        if (po.id == "") {
+            val dbUsers = userService.list()
             dbUsers!!.forEach{
                 users.add(UserVO(it.id, "", it.name, it.groupId, it.dept))
             }
@@ -101,11 +101,16 @@ class OamApiController @Autowired constructor(private var userService: UserServi
     @PostMapping(value = [ "/oamapi/user/delete" ])
     fun deleteUser(@RequestBody po: ReadOrDeletePO): ResponseEntity<ResponsePostPO> {
         var status = OamApiStatus.SUCCESS
-        if (!userService.exist(po.id))
-            status = OamApiStatus.USER_NOT_EXIST
+        if (po.id == "") {
+            status = OamApiStatus.REQUIRED_PARAMETERS
+        } else {
+            if (!userService.exist(po.id))
+                status = OamApiStatus.USER_NOT_EXIST
 
-        if (status == OamApiStatus.SUCCESS)
-            userService.remove(po.id)
+            if (status == OamApiStatus.SUCCESS)
+                userService.remove(po.id)
+        }
+
 
         return ResponseEntity(ResponsePostPO(filteringHeaderVO(po.eACommHeaderVO), status.name), HttpStatus.OK)
     }

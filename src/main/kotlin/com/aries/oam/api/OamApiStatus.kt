@@ -5,5 +5,5 @@ enum class OamApiStatus {
     USER_EXIST,
     USER_NOT_EXIST,
     GROUP_NOT_EXIST,
-    PARAMETER_REQUIRED
+    REQUIRED_PARAMETERS
 }

@@ -82,7 +82,7 @@ class OamApiControllerTests {
                 ))
 
         val r = mockMvc!!.perform(req)
-        r.andExpect(jsonPath("\$.message").value(OamApiStatus.PARAMETER_REQUIRED.name))
+        r.andExpect(jsonPath("\$.message").value(OamApiStatus.REQUIRED_PARAMETERS.name))
         r.andDo(print())
     }
 
@@ -95,7 +95,7 @@ class OamApiControllerTests {
                 ))
 
         val r = mockMvc!!.perform(req)
-        r.andExpect(jsonPath("\$.message").value(OamApiStatus.PARAMETER_REQUIRED.name))
+        r.andExpect(jsonPath("\$.message").value(OamApiStatus.REQUIRED_PARAMETERS.name))
         r.andDo(print())
     }
 
@@ -108,7 +108,7 @@ class OamApiControllerTests {
                 ))
 
         val r = mockMvc!!.perform(req)
-        r.andExpect(jsonPath("\$.message").value(OamApiStatus.PARAMETER_REQUIRED.name))
+        r.andExpect(jsonPath("\$.message").value(OamApiStatus.REQUIRED_PARAMETERS.name))
         r.andDo(print())
     }
 
